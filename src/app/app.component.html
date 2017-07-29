@@ -1,3 +1,31 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+	<h3>{{article.title}}</h3>
+</div>
+<br />
+<div>DOI: {{article.doi}}</div>
+<div>
+	Source: <i>{{article.journal}}</i>, Vol. {{article.volume}} Issue
+	{{article.issue}}, {{article.month}} {{article.year}}
+</div>
+<div>
+	By: <span *ngFor="let author of article.authors; let last = last">
+		<span>{{author.given}} {{author.surname}}<sup><span
+				*ngFor="let affil of author.affils let last1 = last">{{affil}}{{last1
+					? '' : ','}}</span></sup></span><span>{{last ? '' : ','}} </span>
+	</span>
+</div>
+<div>
+	<strong>Affiliations:</strong>
+	<ul>
+		<li *ngFor="let aff of article.affiliations">{{aff.affString}}</li>
+	</ul>
+</div>
+<br />
+<div>
+	<strong>Abstract:</strong>
+	<div>{{article.description}}</div>
+</div>
+<br />
+<div>
+	<strong>Keywords:</strong> {{article.keywords}}
+</div>
