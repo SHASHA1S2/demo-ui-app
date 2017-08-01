@@ -1,14 +1,14 @@
 <div>
-	<h3 [innerHTML]= "article.title"></h3>
+	<h3 [innerHTML]= "article.articleMetadata.title"></h3>
 </div>
 <br />
-<div>DOI: {{article.doi}}</div>
+<div>DOI: {{article.articleMetadata.doi}}</div>
 <div>
-	Source: <i>{{article.journal}}</i>, Vol. {{article.volume}} Issue
-	{{article.issue}}, {{article.month}} {{article.year}}
+	Source: <i>{{article.articleMetadata.journal}}</i>, Vol. {{article.articleMetadata.volume}} Issue
+	{{article.articleMetadata.issue}}, {{article.articleMetadata.month}} {{article.articleMetadata.year}}
 </div>
 <div>
-	By: <span *ngFor="let author of article.authors; let last = last">
+	By: <span *ngFor="let author of article.articleMetadata.authors; let last = last">
 		<span>{{author.given}} {{author.surname}}<sup><span
 				*ngFor="let affil of author.affils let last1 = last">{{affil}}{{last1
 					? '' : ','}}</span></sup></span><span>{{last ? '' : ','}} </span>
@@ -17,18 +17,18 @@
 <div>
 	<strong>Affiliations:</strong>
 	<ul>
-		<li *ngFor="let aff of article.affiliations">{{aff.affString}}</li>
+		<li *ngFor="let aff of article.articleMetadata.affiliations">{{aff.affString}}</li>
 	</ul>
 </div>
 <br />
 <div>
 	<strong>Abstract:</strong>
-	<div [innerHTML]= "article.description"></div>
+	<div [innerHTML]= "article.articleMetadata.description"></div>
 </div>
 <br />
 <div>
-	<strong>Keywords:</strong> {{article.keywords}}
+	<strong>Keywords:</strong> {{article.articleMetadata.keywords}}
 </div>
 <br/>
 
-<!-- <div [innerHTML] = "article.fullText"></div> -->
+<!-- <div [innerHTML] = "article.articleMetadata.fullText"></div> -->
